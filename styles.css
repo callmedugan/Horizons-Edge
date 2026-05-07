@@ -1,0 +1,109 @@
+:root {
+    --skyrim-bg: rgba(18, 18, 18, 0.85); /* Semi-transparent dark slate */
+    --skyrim-text: #e0e0e0;             /* Off-white */
+    --skyrim-accent: #ffffff;           /* Bright white for highlights */
+    --skyrim-border: rgba(255, 255, 255, 0.2);
+}
+
+body {
+    background-color: #0a0a0a; /* Deep black for the void */
+    color: var(--skyrim-text);
+    font-family: 'Futura', 'Trebuchet MS', sans-serif;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    text-transform: uppercase; /* Skyrim menus often use caps */
+    letter-spacing: 1px;
+}
+
+/* Sidebar Layout */
+.sidebar {
+    width: 200px;
+    background: var(--skyrim-bg);
+    border-right: 1px solid var(--skyrim-border);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+h2 {
+    font-size: 1.2rem;
+    border-bottom: 1px solid var(--skyrim-border);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    color: var(--skyrim-accent);
+}
+
+/* Stat Rows */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li, .stat-bar, .stat-group p {
+    margin: 10px 0;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Main Gameplay Area */
+.gameplay-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    background: radial-gradient(circle at center, transparent, #000);
+}
+
+.text-display {
+    flex-grow: 1;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    overflow-y: auto;
+    padding-right: 20px;
+    /* Fog/Smoke effect at the bottom */
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+/* Input Area */
+.input-container {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid var(--skyrim-border);
+    padding-top: 20px;
+}
+
+.prompt {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+input {
+    background: transparent;
+    border: none;
+    color: var(--skyrim-accent);
+    font-family: inherit;
+    font-size: 1.2rem;
+    width: 100%;
+    outline: none;
+}
+
+.stat-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.stat-values {
+    /* Inherits Futura/Trebuchet from the body */
+    text-align: right;
+    /* Keeps the slash and numbers from shifting as values change */
+    display: inline-block;
+    min-width: 90px; 
+}
+

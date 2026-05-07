@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <title>Horizon's Edge</title>
+      <link rel="stylesheet" href="https://pyscript.net/releases/2026.3.1/core.css">
+      <link rel="stylesheet" href="./styles.css">
+      <script type="module" src="https://pyscript.net/releases/2026.3.1/core.js"></script>
+  </head>
+
+<body class="game-container">
+    <script type="py" src="./main.py" config="./pyscript.json"></script>
+    <!-- Sidebar for Player Info -->
+    <aside class="sidebar">
+        <section id="player-status">
+            <h2>Player Info</h2>
+            <div class="stat-group">
+                <p>Level: <span id="level">1</span></p>
+                <p>XP: <span id="xp">0</span></p>
+            </div>
+            <div class="stat-bar">
+                <span>HP:</span>
+                <span class="stat-values"><span id="hp">10</span> / <span id="max-hp">10</span></span>
+            </div>
+            <div class="stat-bar">
+                <span>MP:</span>
+                <span class="stat-values"><span id="mp">5</span> / <span id="max-mp">5</span></span>
+            </div>
+
+        </section>
+
+        <section id="attributes">
+            <h2>Attributes</h2>
+            <ul>
+                <li>STR: <span id="str">1</span></li>
+                <li>DEX: <span id="dex">1</span></li>
+                <li>INT: <span id="int">1</span></li>
+                <li>LUK: <span id="luk">1</span></li>
+            </ul>
+        </section>
+
+        <section id="player-inventory">
+            <h2>Inventory</h2>
+            <ul id="inventory-list">
+                <li>Empty</li>
+            </ul>
+        </section>
+    </aside>
+
+    <!-- Main Gameplay Area -->
+    <main class="gameplay-area">
+        <div id="story-log" class="text-display">
+            <p>Welcome, adventurer. The journey begins here...</p>
+        </div>
+
+        <div class="input-container">
+            <span class="prompt">></span>
+            <input type="text" id="player-input" placeholder="Type a command..." autofocus>
+        </div>
+    </main>
+</body>
+
+</html>
