@@ -1,6 +1,5 @@
 {
     "files": {
-        "./utils.py": "utils.py",
-        "./models/node.py": "models/node.py"
+        "./message.py": "message.py"
     }
 }
