@@ -1,11 +1,8 @@
 from pyscript import when, document # Use document for better DOM control
-import json
 from message import *
 from player import *
 
-# Game start
-log_message("Welcome, adventurer.")
-
+# inputs
 @when("click", "#story-log")
 def focus_input(event):
     document.querySelector("#player-input").focus()
@@ -23,4 +20,8 @@ def handle_enter(event):
             log_message(f"> {command}")
             player_input.value = ""
             process_user_message(command)
+
+
+# Game start
+message_init()
 

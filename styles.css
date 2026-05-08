@@ -19,11 +19,12 @@ body {
 
 /* Sidebar Layout */
 .sidebar {
-    width: 15%;
+    width: 150px;
     background: var(--skyrim-bg);
     border-right: 1px solid var(--skyrim-border);
     padding: 40px 20px;
     display: flex;
+    flex-shrink: 0;
     flex-direction: column;
     gap: 30px;
 }
@@ -65,7 +66,7 @@ h2 {
     overflow-y: auto;
     padding-right: 20px;
     /* Fog/Smoke effect at the bottom */
-    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    /*mask-image: linear-gradient(to bottom, black 80%, transparent 100%);*/
 }
 
 /* Input Area */

@@ -1,0 +1,411 @@
+{
+
+  "class_selection": {
+    "message": "Welcome,. The medallion hums as ancient power recognizes your potential. Choose your path carefully, for it will shape how you survive the road ahead.",
+    "options": {
+      "1": {
+        "text": "Warrior - Hardened by struggle, powerful and resilient.",
+        "target": "class_warrior"
+      },
+      "2": {
+        "text": "Rogue - Swift, precise, and difficult to kill.",
+        "target": "class_rogue"
+      },
+      "3": {
+        "text": "Mage - Self-taught in arcane theory and magical deduction.",
+        "target": "class_mage"
+      },
+      "4": {
+        "text": "Wanderer - Fate bends strangely around you.",
+        "target": "class_wanderer"
+      }
+    }
+  },
+
+  "class_warrior": {
+    "message": "You choose the path of the Warrior. Your body is your weapon, and your strength will carve through adversity.",
+    "set": {
+      "class": "Warrior",
+      "str": 4,
+      "dex": 2,
+      "int": 2,
+      "luk": 2
+    },
+    "xp_gain": 0,
+    "options": {
+      "1": {
+        "text": "Begin your journey.",
+        "target": "prologue_fall"
+      }
+    }
+  },
+
+  "class_rogue": {
+    "message": "You choose the path of the Rogue. Speed, instinct, and precision are your greatest allies.",
+    "set": {
+      "class": "Rogue",
+      "str": 2,
+      "dex": 4,
+      "int": 2,
+      "luk": 2
+    },
+    "xp_gain": 0,
+    "options": {
+      "1": {
+        "text": "Begin your journey.",
+        "target": "prologue_fall"
+      }
+    }
+  },
+
+  "class_mage": {
+    "message": "You choose the path of the Hedge Mage. Knowledge is power, and even imperfect wisdom can shape destiny.",
+    "set": {
+      "class": "Hedge Mage",
+      "str": 2,
+      "dex": 2,
+      "int": 4,
+      "luk": 2
+    },
+    "xp_gain": 0,
+    "options": {
+      "1": {
+        "text": "Begin your journey.",
+        "target": "prologue_fall"
+      }
+    }
+  },
+
+  "class_wanderer": {
+    "message": "You choose the path of the Wanderer. Fortune, chaos, and impossible coincidence walk beside you.",
+    "set": {
+      "class": "Wanderer",
+      "str": 2,
+      "dex": 2,
+      "int": 2,
+      "luk": 4
+    },
+    "xp_gain": 0,
+    "options": {
+      "1": {
+        "text": "Begin your journey.",
+        "target": "prologue_fall"
+      }
+    }
+  },
+
+  "prologue_fall": {
+    "message": "A chaotic blend of static noise, tearing fabric, and fractal storms overwhelms your senses. You fall through impossible geometry before slamming into sudden calm. You gasp awake on a mossy forest floor beside a dead firepit, your nerves fried but intact. Your name is Ballan... and something is very wrong.",
+    "xp_gain": 5,
+    "options": {
+      "1": {
+        "text": "[INT] Analyze what just happened.",
+        "target": "int_check_displacement"
+      },
+      "2": {
+        "text": "Focus on your surroundings.",
+        "target": "awaken_forest"
+      }
+    }
+  },
+
+  "int_check_displacement": {
+    "message": "You force your overstimulated mind to process the impossible sensations.",
+    "requirement": {
+      "stat": "int",
+      "value": 3
+    },
+    "success": {
+      "text": "This was no dream. The lingering ozone, magical distortion, and sensory inversion suggest spatial displacement magic. You steady yourself through logic.",
+      "target": "awaken_forest",
+      "xp_gain": 10
+    },
+    "failure": {
+      "text": "Your thoughts spiral into fractal madness. You try to comprehend infinity and instead black out permanently.",
+      "target": "vertigo_death"
+    }
+  },
+
+  "vertigo_death": {
+    "message": "Your brain melts under cosmic overstimulation. Ballan the bewildered dies before destiny even starts.",
+    "options": {
+      "1": {
+        "text": "Restart",
+        "target": "prologue_fall"
+      }
+    }
+  },
+
+  "awaken_forest": {
+    "message": "Rain-washed earth, damp air, and dappled sunlight filter through ancient trees. Your supplies are neatly packed beside your bedroll. Then panic strikes—you remember the hidden medallion.",
+    "xp_gain": 5,
+    "options": {
+      "1": {
+        "text": "Search for the medallion immediately.",
+        "target": "medallion_check"
+      },
+      "2": {
+        "text": "[DEX] Carefully inspect camp for danger first.",
+        "target": "dex_check_camp"
+      }
+    }
+  },
+
+  "dex_check_camp": {
+    "message": "You swiftly scan the campsite perimeter before moving.",
+    "requirement": {
+      "stat": "dex",
+      "value": 3
+    },
+    "success": {
+      "text": "No thieves, no monsters—only a squirrel judges you from a branch. Your caution pays off.",
+      "target": "medallion_check",
+      "xp_gain": 10
+    },
+    "failure": {
+      "text": "You trip over your own bedroll and smash your face into the firepit stones.",
+      "target": "clumsy_death"
+    }
+  },
+
+  "clumsy_death": {
+    "message": "A legendary destiny ends with an embarrassingly ordinary concussion.",
+    "options": {
+      "1": {
+        "text": "Restart",
+        "target": "prologue_fall"
+      }
+    }
+  },
+
+  "medallion_check": {
+    "message": "You retrieve the silver clock-face medallion from your hidden pocket. For your entire life it never changed... until now. The hand points to XI. Eleven. Your destiny has begun.",
+    "xp_gain": 15,
+    "options": {
+      "1": {
+        "text": "[LUK] Deny reality and hope it's coincidence.",
+        "target": "luk_check_denial"
+      },
+      "2": {
+        "text": "Accept this is the beginning.",
+        "target": "bear_arrival"
+      }
+    }
+  },
+
+  "luk_check_denial": {
+    "message": "You convince yourself this is probably bad rabbit meat hallucination.",
+    "requirement": {
+      "stat": "luk",
+      "value": 3
+    },
+    "success": {
+      "text": "A sudden breeze flips the medallion back and forth, briefly obscuring the XI. You gain enough denial to stay calm... for now.",
+      "target": "bear_arrival",
+      "xp_gain": 5
+    },
+    "failure": {
+      "text": "You laugh hysterically, stumble backward into the road, and are immediately trampled by a wild boar.",
+      "target": "boar_death"
+    }
+  },
+
+  "boar_death": {
+    "message": "Destined, apparently, to become roadkill.",
+    "options": {
+      "1": {
+        "text": "Restart",
+        "target": "prologue_fall"
+      }
+    }
+  },
+
+  "bear_arrival": {
+    "message": "\"I say, did it always look like that?\" A shadow looms over you. You spin around to face an enormous bear in a cloak, hat, and boots.",
+    "options": {
+      "1": {
+        "text": "Dive for your staff and attack!",
+        "target": "attack_boots"
+      },
+      "2": {
+        "text": "[LUK] Attempt diplomacy and hope for the best.",
+        "target": "luk_check_bear"
+      }
+    }
+  },
+
+  "luk_check_bear": {
+    "message": "You attempt diplomacy with the enormous wizard bear, hoping fate favors social survival.",
+    "requirement": {
+      "stat": "luk",
+      "value": 3
+    },
+    "success": {
+      "text": "\"Nice boots,\" you blurt out. Boots gasps in delight. \"Finally! Someone appreciates fashion!\"",
+      "target": "boots_tea",
+      "xp_gain": 15
+    },
+    "failure": {
+      "text": "You accidentally insult his hat. Boots looks so devastated that he unconsciously summons a falling tree.",
+      "target": "sad_bear_death"
+    }
+  },
+
+  "sad_bear_death": {
+    "message": "Killed by emotional devastation and forestry.",
+    "options": {
+      "1": {
+        "text": "Restart",
+        "target": "prologue_fall"
+      }
+    }
+  },
+
+  "attack_boots": {
+    "message": "You unleash a concussive blast. The bear lazily transforms it into bubbles.",
+    "xp_gain": 10,
+    "options": {
+      "1": {
+        "text": "Accept you may be outmatched.",
+        "target": "boots_tea"
+      },
+      "2": {
+        "text": "[STR] Charge the magical bear anyway.",
+        "target": "str_check_bear"
+      }
+    }
+  },
+
+  "str_check_bear": {
+    "message": "You charge a talking wizard bear. Bold. Possibly stupid.",
+    "requirement": {
+      "stat": "str",
+      "value": 4
+    },
+    "success": {
+      "text": "You actually shove Boots half a step. He is so impressed he immediately offers mentorship and tea.",
+      "target": "boots_tea",
+      "xp_gain": 20
+    },
+    "failure": {
+      "text": "Boots catches you, compliments your courage, then accidentally hugs you too hard.",
+      "target": "hug_death"
+    }
+  },
+
+  "hug_death": {
+    "message": "Crushed by affection. A rare but valid cause of death.",
+    "options": {
+      "1": {
+        "text": "Restart",
+        "target": "prologue_fall"
+      }
+    }
+  },
+
+  "boots_tea": {
+    "message": "The bear introduces himself as Boots, Archmage, scholar, salmon enthusiast, and apparently your future mentor. Tea and magical cookware appear from nowhere.",
+    "xp_gain": 20,
+    "options": {
+      "1": {
+        "text": "Listen carefully.",
+        "target": "time_revelation"
+      },
+      "2": {
+        "text": "[INT] Question the logic of his claims.",
+        "target": "int_check_time"
+      }
+    }
+  },
+
+  "int_check_time": {
+    "message": "You critically examine Boots' bizarre explanation of future-you meeting past-him.",
+    "requirement": {
+      "stat": "int",
+      "value": 4
+    },
+    "success": {
+      "text": "Against all reason... his paradox is internally consistent. You hate that this makes sense.",
+      "target": "time_revelation",
+      "xp_gain": 20
+    },
+    "failure": {
+      "text": "You attempt to explain causality to a seven-hundred-year-old bear archmage. He counters flawlessly. Your pride dies instantly.",
+      "target": "ego_death"
+    }
+  },
+
+  "ego_death": {
+    "message": "Your body survives, but your intellectual self-esteem never recovers.",
+    "options": {
+      "1": {
+        "text": "Restart with less arrogance",
+        "target": "prologue_fall"
+      }
+    }
+  },
+
+  "time_revelation": {
+    "message": "Boots reveals your future self already recruited him. Together, you are destined to uncover time travel.",
+    "xp_gain": 25,
+    "options": {
+      "1": {
+        "text": "Accept the apprenticeship.",
+        "target": "the_accord"
+      },
+      "2": {
+        "text": "[INT] Carefully determine if this destiny is real.",
+        "target": "int_check_fate"
+      }
+    }
+  },
+
+  "int_check_fate": {
+    "message": "You carefully analyze Boots' story, weighing logic against absurdity.",
+    "requirement": {
+      "stat": "int",
+      "value": 3
+    },
+    "success": {
+      "text": "The paradox is insane... but internally consistent. This may actually be your destiny.",
+      "target": "the_accord",
+      "xp_gain": 15
+    },
+    "failure": {
+      "text": "You overthink yourself into indecision. Boots assumes refusal and vanishes, leaving you to a lifetime of regret.",
+      "target": "missed_destiny_death"
+    }
+  },
+
+  "missed_destiny_death": {
+    "message": "Not all deaths are physical. Some are simply the death of possibility.",
+    "options": {
+      "1": {
+        "text": "Restart",
+        "target": "prologue_fall"
+      }
+    }
+  },
+
+  "the_accord": {
+    "message": "You drink enchanted tea and accept Boots as your master. Your gear packs itself by magic as Boots proudly declares your journey has begun.",
+    "xp_gain": 50,
+    "options": {
+      "1": {
+        "text": "Follow Boots into the unknown.",
+        "target": "prologue_end"
+      }
+    }
+  },
+
+  "prologue_end": {
+    "message": "You step onto the road beside Boots, Archmage of impossible credentials. For the first time, destiny feels less like a curse... and more like an adventure. PROLOGUE COMPLETE.",
+    "xp_gain": 100,
+    "options": {
+      "1": {
+        "text": "Play Again",
+        "target": "prologue_fall"
+      }
+    }
+  }
+}

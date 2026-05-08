@@ -2,6 +2,7 @@
     "files": {
         "./message.py": "message.py",
         "./player.py": "player.py",
-        "./data/player_start.json": "data/player_start.json"
+        "./data/player_start.json": "data/player_start.json",
+        "./data/messages.json": "data/messages.json"
     }
 }
