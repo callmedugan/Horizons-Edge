@@ -19,7 +19,7 @@ body {
 
 /* Sidebar Layout */
 .sidebar {
-    width: 200px;
+    width: 15%;
     background: var(--skyrim-bg);
     border-right: 1px solid var(--skyrim-border);
     padding: 40px 20px;
