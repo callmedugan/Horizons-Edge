@@ -1,7 +1,7 @@
 {
 
   "class_selection": {
-    "message": "Welcome,. The medallion hums as ancient power recognizes your potential. Choose your path carefully, for it will shape how you survive the road ahead.",
+    "message": "The medallion hums as ancient power recognizes your potential. Choose your path carefully, for it will shape how you survive the road ahead.",
     "options": {
       "1": {
         "text": "Warrior - Hardened by struggle, powerful and resilient.",
@@ -61,7 +61,7 @@
   "class_mage": {
     "message": "You choose the path of the Hedge Mage. Knowledge is power, and even imperfect wisdom can shape destiny.",
     "set": {
-      "class": "Hedge Mage",
+      "class": "Mage",
       "str": 2,
       "dex": 2,
       "int": 4,

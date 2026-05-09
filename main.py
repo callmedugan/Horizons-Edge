@@ -8,7 +8,7 @@ def focus_input(event):
     document.querySelector("#player-input").focus()
 
 @when("keydown", "#player-input")
-def handle_enter(event):
+async def handle_enter(event):
     if not hasattr(event, "key") or event.key is None:
         return
     if event.key == "Enter":
@@ -17,11 +17,8 @@ def handle_enter(event):
         command = player_input.value.strip()
         
         if command:
-            log_message(f"> {command}")
+            await log_message(f"> {command}")
             player_input.value = ""
-            process_user_message(command)
+            await process_user_message(command)
 
-
-# Game start
-message_init()
 
