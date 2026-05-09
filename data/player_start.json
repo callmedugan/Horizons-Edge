@@ -1,5 +1,6 @@
 {
     "base_stats": {
+        "class": "",
         "hp": 10,
         "max-hp": 10,
         "mp": 5,

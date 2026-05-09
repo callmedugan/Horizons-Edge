@@ -17,7 +17,6 @@ async def handle_enter(event):
         command = player_input.value.strip()
         
         if command:
-            await log_message(f"> {command}")
             player_input.value = ""
             await process_user_message(command)
 

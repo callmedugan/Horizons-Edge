@@ -59,7 +59,7 @@
   },
 
   "class_mage": {
-    "message": "You choose the path of the Hedge Mage. Knowledge is power, and even imperfect wisdom can shape destiny.",
+    "message": "You choose the path of the Mage. Knowledge is power, and even imperfect wisdom can shape destiny.",
     "set": {
       "class": "Mage",
       "str": 2,
