@@ -1,7 +1,10 @@
 from pyscript import document, when
 from player import *
+from stats import check_for_lvl_up
 import json
 import asyncio
+
+on_levelup_message = False
 
 with open("data/messages.json", "r") as f:
     message_data = json.load(f)
@@ -33,9 +36,12 @@ async def log_current_node():
 
 async def process_user_message(message):
     global current_node
+    global on_levelup_message
     options = current_node.get("options", {})
 
     formatted_message = message.lower()
+    #if on_levelup_message and 
+
     if formatted_message in options:
         #print the selected option
         await log_message(f"> {formatted_message}: {options[formatted_message]["text"]}", "text-player")

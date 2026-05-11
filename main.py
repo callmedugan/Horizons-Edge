@@ -1,5 +1,5 @@
 from pyscript import when, document # Use document for better DOM control
-from message import *
+from messages import *
 from player import *
 
 # inputs
