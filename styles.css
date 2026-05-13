@@ -106,45 +106,60 @@ input {
     min-width: 90px; 
 }
 
-/* Narratives should be soft off-white to avoid eye strain */
-.text-narrative { 
-    color: #DBDBCC; 
-    font-size: 0.95rem; 
-    line-height: 1.5;
+/* Shared style foundation for all text types */
+.text-narrative,
+.text-player,
+.text-option,
+.text-success,
+.text-failure,
+.text-gold {
+    font-size: 0.8rem;
+    line-height: 1.55;
+    letter-spacing: 0.03em;
 }
 
-/* Player text: Replaced light blue with a clean 'High-Elf' Silver/White */
-/* This makes the player's choices feel like a clear reflection in the void */
-.text-player { 
-    color: #FFFFFF; 
-    font-weight: bold; 
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+/* Narratives: Soft parchment/off-white for readability */
+.text-narrative {
+    color: #D8D5C8;
+    font-weight: 400;
 }
 
-/* Options: Swapped pink/purple for a 'Soul Gem' Teal */
-/* Purple often clashes with gold; this teal complements both gold and red better */
-.text-option { 
-    color: #83C5BE; 
+/* Player: Silver-white, clear and prominent */
+.text-player {
+    color: #F5F5F5;
+    font-weight: 700;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+}
+
+/* Options: Soul gem teal, interactive but elegant */
+.text-option {
+    color: #7FC8BE;
     font-style: italic;
+    font-weight: 500;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
-/* Success: Swapped mint for a 'Restoration Magic' Emerald */
-/* A deeper, richer green feels more like a reward */
-.text-success { 
-    color: #4CAF50; 
-    font-weight: bold;
+/* Success: Emerald reward tone */
+.text-success {
+    color: #4FAF5F;
+    font-weight: 700;
+    text-shadow: 0 0 4px rgba(79, 175, 95, 0.2);
 }
 
-/* Failure: Swapped bright red for a 'Daedric' Crimson */
-/* A slightly darker, bloodier red fits the Skyrim aesthetic better */
-.text-failure { 
-    color: #B22222; 
-    text-transform: uppercase; /* Adds impact to failures */
-    letter-spacing: 1px;
+/* Failure: Dark crimson, impactful */
+.text-failure {
+    color: #B33A3A;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 4px rgba(179, 58, 58, 0.2);
 }
 
-/* Gold/System: Keep your gold, but let's make it a bit 'Bronzed' */
-.text-gold { 
-    color: #CFB53B; 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+/* Gold/System: Antique gold for importance */
+.text-gold {
+    color: #C9A646;
+    font-weight: 500;
+    text-shadow:
+        1px 1px 3px rgba(0, 0, 0, 0.75),
+        0 0 6px rgba(201, 166, 70, 0.25);
 }

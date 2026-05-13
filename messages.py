@@ -30,8 +30,12 @@ async def log_current_node():
     await log_message(current_node["message"])
     #loop through options and log
     options = current_node.get("options", {})
+    messages = []
     for key, choice_data in options.items():
-        await log_message(key + ": " + choice_data["text"], "text-option")
+        messages.append(key + ": " + choice_data["text"])
+    
+    if messages:
+        await log_message("\n".join(messages), "text-option")
 
 async def process_user_message(message):
     global current_node
@@ -100,11 +104,12 @@ async def handle_xp_gain(node):
 
 async def print_levelup_message():
     points = stats["stat_points"]
-    await log_message(f"Your level has increased! You have {points} stat points. Choose the stat(s) you wish to increase:")
-    await log_message("1: STR")
-    await log_message("2: DEX")
-    await log_message("3: INT")
-    await log_message("4: LUK")
+    msg = f"Your level has increased! You have {points} stat points. Choose the stat(s) you wish to increase:"
+    msg += "\n1: STR"
+    msg += "\n2: DEX"
+    msg += "\n3: INT"
+    msg += "\n4: LUK"
+    await log_message(msg, "text-gold")
 
 async def handle_levelup(message):
     if message == "1":
@@ -121,7 +126,7 @@ async def handle_levelup(message):
         await log_message(f"> 4: LUK", "text-player")
     # check for more points    
     if stats["stat_points"] > 0:
-        await log_message(f"You have {stats["stat_points"]} stat points remaining.")
+        await log_message(f"You have {stats["stat_points"]} stat points remaining.", "text-gold")
         return True
     # log new node if points have been spent
     await log_message(" ")
@@ -130,10 +135,13 @@ async def handle_levelup(message):
 
 async def handle_set():
     set = current_node.get("set")
+    messages = []
     for stat, value in set.items():
         #everything is capitalized anyways
         set_stat(stat, value)
-        await log_message(f"{stat} set to {value}!", "text-gold")
+        messages.append(f"{stat} set to {value}!")
+    if messages:
+        await log_message("\n".join(messages), "text-gold")
 
 async def handle_stat_check():
     global current_node
@@ -152,7 +160,7 @@ async def handle_stat_check():
         await log_current_node()
 
 
-async def log_message(message, css_class="text-narrative", delay=0.00003):
+async def log_message(message, css_class="text-narrative", delay=0.001):
     log = document.querySelector("#story-log")
     
     #block input
