@@ -96,7 +96,7 @@
 
   "prologue_fall": {
     "message": "A chaotic blend of static noise, tearing fabric, and fractal storms overwhelms your senses. You fall through impossible geometry before slamming into sudden calm. You gasp awake on a mossy forest floor beside a dead firepit, your nerves fried but intact. Your name is Ballan... and something is very wrong.",
-    "xp_gain": 5,
+    "xp_gain": 0,
     "options": {
       "1": {
         "text": "[INT] Analyze what just happened.",

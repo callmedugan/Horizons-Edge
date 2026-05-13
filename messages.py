@@ -1,6 +1,5 @@
 from pyscript import document, when
 from player import *
-from stats import check_for_lvl_up
 import json
 import asyncio
 
@@ -40,9 +39,12 @@ async def process_user_message(message):
     options = current_node.get("options", {})
 
     formatted_message = message.lower()
-    #if on_levelup_message and 
+    #if on_levelup_message dont do any other checking
+    if on_levelup_message:
+        on_levelup_message = await handle_levelup(formatted_message)
+        return
 
-    if formatted_message in options:
+    elif formatted_message in options:
         #print the selected option
         await log_message(f"> {formatted_message}: {options[formatted_message]["text"]}", "text-player")
         #drill down to the respective target node name and set current node
@@ -55,17 +57,17 @@ async def process_user_message(message):
         #set current node to the target node and then get the new options
         current_node = message_data[target_node_name]
         options = current_node.get("options", {})
-
+ 
         #gain xp if a target node was found
-        if "xp_gain" in current_node:
-            xp_gained = current_node["xp_gain"]
-            if xp_gained > 0:
-                increase_stat("xp", xp_gained)
-                await log_message(f"Gained {xp_gained}xp!", "text-gold")
+        await handle_xp_gain(current_node)
 
         #check for set fields to set play stats
         if "set" in current_node:
             await handle_set()
+
+        if on_levelup_message:
+            await print_levelup_message()
+            return
     
     else:
         #print the input raw text if not in an option
@@ -87,6 +89,45 @@ async def process_user_message(message):
     if "requirement" in current_node:
         await handle_stat_check()
         
+async def handle_xp_gain(node):
+    global on_levelup_message
+    if "xp_gain" in node:
+        xp_gained = node["xp_gain"]
+        if xp_gained > 0:
+            increase_stat("xp", xp_gained)
+            await log_message(f"Gained {xp_gained}xp!", "text-gold")
+            on_levelup_message = check_for_lvl_up()
+
+async def print_levelup_message():
+    points = stats["stat_points"]
+    await log_message(f"Your level has increased! You have {points} stat points. Choose the stat(s) you wish to increase:")
+    await log_message("1: STR")
+    await log_message("2: DEX")
+    await log_message("3: INT")
+    await log_message("4: LUK")
+
+async def handle_levelup(message):
+    if message == "1":
+        spend_stat_point("str")
+        await log_message(f"> 1: STR", "text-player")
+    elif message == "2":
+        spend_stat_point("dex")
+        await log_message(f"> 2: DEX", "text-player")
+    elif message == "3":
+        spend_stat_point("int")
+        await log_message(f"> 3: INT", "text-player")
+    elif message == "4":
+        spend_stat_point("luk")
+        await log_message(f"> 4: LUK", "text-player")
+    # check for more points    
+    if stats["stat_points"] > 0:
+        await log_message(f"You have {stats["stat_points"]} stat points remaining.")
+        return True
+    # log new node if points have been spent
+    await log_message(" ")
+    await log_current_node()
+    return False
+
 async def handle_set():
     set = current_node.get("set")
     for stat, value in set.items():
@@ -99,14 +140,19 @@ async def handle_stat_check():
     has_req_stat = perform_stat_check(current_node["requirement"]["stat"], current_node["requirement"]["value"])
     if has_req_stat:
         await log_message(current_node["success"]["text"], "text-success")
+        await handle_xp_gain(current_node["success"])
         current_node = message_data[current_node["success"]["target"]]
     else:
         await log_message(current_node["failure"]["text"], "text-failure")
         current_node = message_data[current_node["failure"]["target"]]
-    await log_current_node()
+    
+    if on_levelup_message:
+        await print_levelup_message()
+    else:
+        await log_current_node()
 
 
-async def log_message(message, css_class="text-narrative", delay=0.003):
+async def log_message(message, css_class="text-narrative", delay=0.00003):
     log = document.querySelector("#story-log")
     
     #block input

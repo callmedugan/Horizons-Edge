@@ -2,8 +2,6 @@
     "files": {
         "./messages.py": "messages.py",
         "./player.py": "player.py",
-        "./stats.py": "stats.py",
-        "./data/player_start.json": "data/player_start.json",
         "./data/stats.json": "data/stats.json",
         "./data/messages.json": "data/messages.json"
     }
